@@ -1,76 +1,52 @@
-import React, { Component } from 'react';
-import * as Message from './../constants/Message';
-
-class CartItem extends Component {
-
-    render() {
-        var { item } = this.props;
-        var { quantity } = item;
-        return (
-            <tr>
-                <th scope="row">
-                    <img src={item.product.image}
-                        alt={item.product.name} className="img-fluid z-depth-0" />
-                </th>
-                <td>
-                    <h5>
-                        <strong>{item.product.name}</strong>
-                    </h5>
-                </td>
-                <td>{item.product.price}$</td>
-                <td className="center-on-small-only">
-                    <span className="qty">{quantity} </span>
-                    <div className="btn-group radio-group" data-toggle="buttons">
-                        <label
-                            onClick={() => this.onUpdateQuantity(item.product, item.quantity - 1)}
-                            className="btn btn-sm btn-primary btn-rounded waves-effect waves-light"
-                        >
-                            <a>—</a>
-                        </label>
-                        <label
-                            onClick={() => this.onUpdateQuantity(item.product, item.quantity + 1)}
-                            className="btn btn-sm btn-primary btn-rounded waves-effect waves-light"
-                        >
-                            <a>+</a>
-                        </label>
-                    </div>
-                </td>
-                <td>{this.showSubTotal(item.product.price, item.quantity)}$</td>
-                <td>
-                    <button
-                        type="button"
-                        className="btn btn-sm btn-primary waves-effect waves-light"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title=""
-                        data-original-title="Remove item"
-                        onClick={() => this.onDelete(item.product)}
-                    >
-                        X
-                    </button>
-                </td>
-            </tr>
-        );
-    }
-
-    onUpdateQuantity = (product, quantity) => {
-        if (quantity > 0) {
-            var { onUpdateProductInCart, onChangeMessage } = this.props;
-            onUpdateProductInCart(product, quantity);
-            onChangeMessage(Message.MSG_UPDATE_CART_SUCCESS);
-        }
-    }
-
-    onDelete = (product) => {
-        var { onDeleteProductInCart, onChangeMessage } = this.props;
-        onDeleteProductInCart(product);
-        onChangeMessage(Message.MSG_DELETE_PRODUCT_IN_CART_SUCCESS);
-    }
-
-    showSubTotal = (price, quantity) => {
-        return price * quantity;
-    }
-
-}
-
-export default CartItem;
+import React from "react";
+export const CartItem = () => {
+  return (
+    <div>
+      <tr>
+        <th scope="row">
+          <img
+            src="https://store.storeimages.cdn-apple.com/4974/as-images.apple.com/is/image/AppleInc/aos/published/images/H/H0/HH0H2/HH0H2?wid=445&hei=445&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=K7ik72"
+            alt=""
+            class="img-fluid z-depth-0"
+          />
+        </th>
+        <td>
+          <h5>
+            <strong>Iphone 6 Plus</strong>
+          </h5>
+        </td>
+        <td>15$</td>
+        <td class="center-on-small-only">
+          <span class="qty">1 </span>
+          <div class="btn-group radio-group" data-toggle="buttons">
+            <label
+              class="btn btn-sm btn-primary
+                                                        btn-rounded waves-effect waves-light"
+            >
+              <a>—</a>
+            </label>
+            <label
+              class="btn btn-sm btn-primary
+                                                        btn-rounded waves-effect waves-light"
+            >
+              <a>+</a>
+            </label>
+          </div>
+        </td>
+        <td>15$</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-sm btn-primary waves-effect waves-light"
+            data-toggle="tooltip"
+            data-placement="top"
+            title=""
+            data-original-title="Remove item"
+          >
+            X
+          </button>
+        </td>
+      </tr>
+    </div>
+  );
+};
