@@ -1,53 +1,42 @@
 import React from "react";
-export const Product = () => {
+export const Product = (props) => {
+  const {product}=props
   return (
-      <div class="col-lg-4 col-md-6 mb-r">
-        <div class="card text-center card-cascade narrower">
-          <div class="view overlay hm-white-slight z-depth-1">
+      <div className="col-lg-4 col-md-6 mb-r">
+        <div className="card text-center card-cascade narrower">
+          <div className="view overlay hm-white-slight z-depth-1">
             <img
-              src="https://store.storeimages.cdn-apple.com/4974/as-images.apple.com/is/image/AppleInc/aos/published/images/H/H0/HH0H2/HH0H2?wid=445&hei=445&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=K7ik72"
-              class="img-fluid"
-              alt=""
+              src={[product.image]}
+              className="img-fluid"
+              alt={product.name}
             />
             <a>
-              <div class="mask waves-light waves-effect waves-light" />
+              <div className="mask waves-light waves-effect waves-light" />
             </a>
           </div>
-          <div class="card-body">
-            <h4 class="card-title">
+          <div className="card-body">
+            <h4 className="card-title">
               <strong>
-                <a>Iphone 6 Plus</a>
+                <a>{product.name}</a>
               </strong>
             </h4>
-            <ul class="rating">
+            <ul className="rating">
               <li>
-                <i class="fa fa-star" />
-              </li>
-              <li>
-                <i class="fa fa-star" />
-              </li>
-              <li>
-                <i class="fa fa-star" />
-              </li>
-              <li>
-                <i class="fa fa-star" />
-              </li>
-              <li>
-                <i class="fa fa-star" />
+                <i className="fa fa-star" />
               </li>
             </ul>
-            <p class="card-text">Products do apply sản xuất</p>
-            <div class="card-footer">
-              <span class="left">15$</span>
-              <span class="right">
+            <p className="card-text">{product.description}</p>
+            <div className="card-footer">
+              <span className="left">{product.price}</span>
+              <span className="right">
                 <a
-                  class="btn-floating blue-gradient"
+                  className="btn-floating blue-gradient"
                   data-toggle="tooltip"
                   data-placement="top"
                   title=""
                   data-original-title="Add to Cart"
                 >
-                  <i class="fa fa-shopping-cart" />
+                  <i className="fa fa-shopping-cart" />
                 </a>
               </span>
             </div>

@@ -4,9 +4,9 @@ import { CartResult } from "./CartResult";
 export const Cart = () => {
   return (
     <div>
-      <section class="section">
-        <div class="table-responsive">
-          <table class="table product-table">
+      <section className="section">
+        <div className="table-responsive">
+          <table className="table product-table">
             <thead>
               <tr>
                 <th />
