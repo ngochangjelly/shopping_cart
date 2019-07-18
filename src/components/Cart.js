@@ -1,7 +1,6 @@
 import React from "react";
-import { CartItem } from "./CartItem";
-import { CartResult } from "./CartResult";
-export const Cart = () => {
+const Cart = (props) => {
+  const {children}=props
   return (
     <div>
       <section className="section">
@@ -18,8 +17,7 @@ export const Cart = () => {
               </tr>
             </thead>
             <tbody>
-              <CartItem />
-              <CartResult />
+              {children}
             </tbody>
           </table>
         </div>
@@ -27,3 +25,4 @@ export const Cart = () => {
     </div>
   );
 };
+export default Cart
