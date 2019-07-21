@@ -1,20 +1,30 @@
 import React from "react";
-const showSubToTal=(price, quantity)=>{
-  return parseInt(price) * parseInt(quantity)
-}
+import {connect} from 'react-redux'
+import * as message from '../constants/Message'
+const showSubToTal = (price, quantity) => {
+  const total=parseInt(price,10) * parseInt(quantity,10)
+  return total;
+};
 const CartItem = props => {
   const item = props.item;
+  const { price, name, image} = item.product;
+  const { product,quantity } = item;
+  const {onChangeMessage, onDeleteProduct}=props
+  const handleDeleteProduct=(product)=>{
+    onDeleteProduct(product)
+    onChangeMessage(message.MSG_DELETE_PRODUCT_IN_CART_SUCCESS)
+  }
   return (
     <tr>
       <th scope="row">
-        <img src={item.product.image} alt="" className="img-fluid z-depth-0" />
+        <img src={image} alt="" className="img-fluid z-depth-0" />
       </th>
       <td>
         <h5>
-          <strong>{item.product.name}</strong>
+          <strong>{name}</strong>
         </h5>
       </td>
-      <td>{item.product.price}$</td>
+      <td>{price}$</td>
       <td className="center-on-small-only">
         <span className="qty">{item.quantity} </span>
         <div className="btn-group radio-group" data-toggle="buttons">
@@ -26,7 +36,7 @@ const CartItem = props => {
           </label>
         </div>
       </td>
-      <td>{showSubToTal(item.product.price, item.quantity)}$</td>
+      <td>{showSubToTal(price, quantity)}$</td>
       <td>
         <button
           type="button"
@@ -35,6 +45,7 @@ const CartItem = props => {
           data-placement="top"
           title=""
           data-original-title="Remove item"
+          onClick={()=>handleDeleteProduct(product)}
         >
           X
         </button>
@@ -42,4 +53,5 @@ const CartItem = props => {
     </tr>
   );
 };
-export default CartItem;
+
+export default connect(null, null)(CartItem);

@@ -4,10 +4,9 @@ const CartResult = props => {
   const { cart } = props;
   const showTotalAmount = cart => {
     let total = 0;
-    cart &&
-      cart.map(item => {
-        total += item.product.price * item.quantity;
-      });
+      for (let index = 0; index < cart.length; index++) {
+        total += cart[index].product.price * cart[index].quantity;
+      }
     return total;
   };
   return (

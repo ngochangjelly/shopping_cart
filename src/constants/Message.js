@@ -1,5 +1,5 @@
 export const MSG_ADD_TO_CART_SUCCESS='Complete purchase !'
 export const MSG_UPDATE_TO_CART_SUCCESS='Update cart successfully !'
-export const MSG_DELETE_TO_CART_SUCCESS='Delete cart successfully !'
+export const MSG_DELETE_PRODUCT_IN_CART_SUCCESS='Delete product in cart successfully !'
 export const MSG_CART_EMPTY='Your cart is empty !'
 export const MSG_WELCOME='Welcome to our site !'

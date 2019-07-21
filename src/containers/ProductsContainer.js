@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import Products from "./../components/Products";
+import {actAddToCart, actChangeMessage} from '../actions/index'
 
 const ProductsContainer = (props) => {
-  const products=props.products
+  const {products}=props
+  const {onAddToCart, onChangeMessage}=props
   return (
-    <Products products={products}/>
+    <Products products={products} onAddToCart={onAddToCart} onChangeMessage={onChangeMessage}/>
   );
 };
 ProductsContainer.propTypes={
@@ -20,11 +22,22 @@ ProductsContainer.propTypes={
             inventory:  PropTypes.number.isRequired,
             rating: PropTypes.number.isRequired
         })
-    ).isRequired
+    ).isRequired,
+    onChangeMessage: PropTypes.func.isRequired
 }
 const mapStateToProps=state=>{
   return{
     products:state.products
   }
 }
-export default connect(mapStateToProps,null)(ProductsContainer)
+const mapDispatchToProps=(dispatch, props)=>{
+  return{
+    onAddToCart: (product)=>{
+      dispatch(actAddToCart(product, 1))
+    },
+    onChangeMessage: (message)=>{
+      dispatch(actChangeMessage(message))
+    }
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(ProductsContainer)
