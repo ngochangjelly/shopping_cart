@@ -1,19 +1,19 @@
 import React from "react";
-import {connect} from 'react-redux'
-import * as message from '../constants/Message'
+import { connect } from "react-redux";
+import * as message from "../constants/Message";
 const showSubToTal = (price, quantity) => {
-  const total=parseInt(price,10) * parseInt(quantity,10)
+  const total = parseInt(price, 10) * parseInt(quantity, 10);
   return total;
 };
 const CartItem = props => {
-  const item = props.item;
-  const { price, name, image} = item.product;
-  const { product,quantity } = item;
-  const {onChangeMessage, onDeleteProduct}=props
-  const handleDeleteProduct=(product)=>{
-    onDeleteProduct(product)
-    onChangeMessage(message.MSG_DELETE_PRODUCT_IN_CART_SUCCESS)
-  }
+  const { item } = props;
+  const { price, name, image } = item.product;
+  const { product, quantity } = item;
+  const { onChangeMessage, onDeleteProduct } = props;
+  const handleDeleteProduct = product => {
+    onDeleteProduct(product);
+    onChangeMessage(message.MSG_DELETE_PRODUCT_IN_CART_SUCCESS);
+  };
   return (
     <tr>
       <th scope="row">
@@ -26,7 +26,7 @@ const CartItem = props => {
       </td>
       <td>{price}$</td>
       <td className="center-on-small-only">
-        <span className="qty">{item.quantity} </span>
+        <span className="qty">{quantity} </span>
         <div className="btn-group radio-group" data-toggle="buttons">
           <label className="btn btn-sm btn-primary btn-rounded waves-effect waves-light">
             <a>—</a>
@@ -45,7 +45,7 @@ const CartItem = props => {
           data-placement="top"
           title=""
           data-original-title="Remove item"
-          onClick={()=>handleDeleteProduct(product)}
+          onClick={() => handleDeleteProduct(product)}
         >
           X
         </button>
@@ -54,4 +54,7 @@ const CartItem = props => {
   );
 };
 
-export default connect(null, null)(CartItem);
+export default connect(
+  null,
+  null
+)(CartItem);
